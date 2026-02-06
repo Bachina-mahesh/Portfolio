@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachina Mahesh Babu | AI Engineer & Full-Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Cursor Follower -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <span class="logo-text">MB</span>
+        </div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                About
+            </a>
+            <a href="#projects" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M9 3v18"/>
+                </svg>
+                Projects
+            </a>
+            <a href="#skills" class="nav-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                Skills
+            </a>
+            <a href="#contact" class="nav-link contact-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                Contact
+            </a>
+        </div>
+        <div class="nav-social">
+            <a href="https://www.linkedin.com/in/bachina-mahesh-babu-b9742027a/" target="_blank" class="nav-icon" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/Bachina-mahesh" target="_blank" class="nav-icon" title="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="https://leetcode.com/u/Mahesh-Babu-Bachina/" target="_blank" class="nav-icon" title="LeetCode">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Available for opportunities</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line-full title-white">Bachina</span>
+                    <span class="title-line-full gradient-text">Mahesh</span>
+                    <span class="title-line-center title-white">Babu</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Software Engineer | AI Engineer & Full-Stack Developer
+                    <br/>
+                    Crafting intelligent systems • <span class="typing-text"></span>
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">1680+</div>
+                        <div class="stat-label">LeetCode</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Cost Reduction</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Work</a>
+                    <a href="https://github.com/Bachina-mahesh" target="_blank" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/bachina-mahesh-babu-b9742027a/" target="_blank" class="social-icon" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Bachina-mahesh" target="_blank" class="social-icon" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://leetcode.com/u/Mahesh-Babu-Bachina/" target="_blank" class="social-icon" title="LeetCode">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/mahesh__bachina/" target="_blank" class="social-icon" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.codechef.com/users/bachina_mahesh" target="_blank" class="social-icon" title="CodeChef">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.257.004c-.37.002-.735.018-1.097.048C4.57.339.339 4.57.052 10.16c-.287 5.59 3.517 10.509 9.02 11.672 5.504 1.163 10.816-2.309 12.591-8.234 1.775-5.925-1.004-12.253-6.595-14.992C13.53-.67 12.25.001 11.257.004zm.034 1.31c2.867-.001 5.68 1.274 7.556 3.48 2.988 3.49 3.537 8.677 1.317 12.77-2.22 4.094-6.916 6.114-11.31 4.99-4.394-1.124-7.363-5.305-7.136-10.048.227-4.742 3.556-8.712 8-9.543.657-.123 1.323-.18 1.99-.181zm-.032 2.067c-2.324-.001-4.6 1.004-6.115 2.732-2.408 2.741-2.779 6.82-.89 9.96 1.889 3.14 5.435 4.804 8.852 4.156 3.417-.648 6.011-3.447 6.475-6.987.464-3.54-1.39-6.986-4.625-8.596-1.203-.6-2.526-.9-3.847-.901zm.003 1.722c2.02-.002 4.004.942 5.312 2.542 2.077 2.49 2.32 6.173.581 8.953-1.74 2.78-5.139 4.127-8.256 3.273-3.118-.854-5.263-3.79-5.21-7.13.053-3.34 2.325-6.213 5.516-6.97.594-.14 1.199-.21 1.805-.211zm-.005 1.591c-1.78-.001-3.523.827-4.66 2.18-1.805 2.135-1.989 5.3-.441 7.658 1.548 2.357 4.412 3.554 7.089 2.964 2.677-.59 4.672-2.803 4.94-5.481.268-2.678-1.316-5.224-3.923-6.305-.97-.405-2.02-.61-3.073-.612zm.003 1.45c1.556-.001 3.082.71 4.07 1.89 1.573 1.852 1.728 4.603.372 6.634-1.356 2.031-3.84 3.088-6.165 2.622-2.325-.466-4.066-2.434-4.316-4.878-.25-2.444 1.09-4.738 3.322-5.687.83-.353 1.723-.532 2.62-.533zm.003 1.31c-1.334-.001-2.64.608-3.484 1.62-1.344 1.588-1.48 3.944-.328 5.692 1.152 1.748 3.295 2.648 5.302 2.235 2.007-.413 3.485-2.087 3.7-4.186.215-2.099-.932-4.062-2.851-4.877-.714-.304-1.483-.459-2.247-.46zM13 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <div class="scroll-indicator">
+                    <span>Scroll</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">01. Introduction</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text">
+                        Hi! I'm Mahesh, a Computer Science student specializing in AI at Parul University. 
+                        I build intelligent systems that solve real-world problems through innovative technology.
+                    </p>
+                    <p class="about-text">
+                        My journey in tech has been driven by curiosity and a passion for creating impactful solutions. 
+                        From developing AI-powered document processing systems that achieve <strong>90% cost reduction</strong> 
+                        to building full-stack applications, I thrive on challenges that push technological boundaries.
+                    </p>
+                    <p class="about-text">
+                        As a co-founder of Teklozy EdTech startup, I've also contributed to empowering students 
+                        with STEM education, designing interactive learning modules for grades 6-12.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="image-placeholder">
+                            <!-- Replace 'Bachina_Pfofic.jpeg' with your actual photo filename -->
+                            <img src="Bachina_Pfofic.jpeg" alt="Mahesh Babu" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">01.5 Academic Journey</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-year">2022 - Present</div>
+                    <div class="education-content">
+                        <div class="education-icon">🎓</div>
+                        <div class="education-details">
+                            <h3 class="education-degree">Bachelor of Technology in Computer Science (AI)</h3>
+                            <p class="education-institute">Parul University, Vadodara</p>
+                            <div class="education-grade">
+                                <span class="grade-label">CGPA:</span>
+                                <span class="grade-value">7.77/10</span>
+                                <span class="grade-info">(Till 7th Semester)</span>
+                            </div>
+                            <div class="education-highlights">
+                                <span class="highlight-tag">Specialization: Artificial Intelligence</span>
+                                <span class="highlight-tag">Expected: 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-year">2020 - 2022</div>
+                    <div class="education-content">
+                        <div class="education-icon">📚</div>
+                        <div class="education-details">
+                            <h3 class="education-degree">Intermediate (Class 12th)</h3>
+                            <p class="education-institute">Vignan Co-Operative Jr. College, Vadlamudi</p>
+                            <div class="education-grade">
+                                <span class="grade-label">Percentage:</span>
+                                <span class="grade-value">88.6%</span>
+                            </div>
+                            <div class="education-highlights">
+                                <span class="highlight-tag">Stream: MPC (Maths, Physics, Chemistry)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-year">2019 - 2020</div>
+                    <div class="education-content">
+                        <div class="education-icon">🏫</div>
+                        <div class="education-details">
+                            <h3 class="education-degree">Secondary Education (Class 10th)</h3>
+                            <p class="education-institute">Oxford High School, Uppugunduru</p>
+                            <div class="education-grade">
+                                <span class="grade-label">Percentage:</span>
+                                <span class="grade-value">100%</span>
+                            </div>
+                            <div class="education-highlights">
+                                <span class="highlight-tag">Perfect Score</span>
+                                <span class="highlight-tag">Board: SSC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">02. Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card featured">
+                    <div class="project-number">01</div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered Document Processing System</h3>
+                        <p class="project-description">
+                            Intelligent multi-agent system using FastAPI and CrewAI that automates document 
+                            classification, extraction, validation, and routing with 95% accuracy. Achieved 
+                            10x faster processing and 90% cost reduction through optimized architecture.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">CrewAI</span>
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Ollama</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">10x</span>
+                                <span class="metric-label">Faster</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">90%</span>
+                                <span class="metric-label">Cost ↓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-number">02</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Waste Sorter</h3>
+                        <p class="project-description">
+                            Full-stack waste classification web app using React and Flask, leveraging CNN 
+                            model to classify waste into 9 categories with real-time disposal guidance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CNN</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">10x</span>
+                                <span class="metric-label">Faster</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">90%</span>
+                                <span class="metric-label">Cost ↓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-number">03</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Portfolio Website</h3>
+                        <p class="project-description">
+                            Modern portfolio with 3D animations using Three.js, featuring responsive design,
+                            particle systems, and interactive elements. Built with HTML, CSS, and JavaScript.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-number">04</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Speech-to-Text Microservice</h3>
+                        <p class="project-description">
+                            Scalable Python microservice converting audio input to accurate text, 
+                            enabling seamless integration into larger NLP pipelines.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SpeechRecognition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">03. Expertise</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">💻</div>
+                        <h3>Programming</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Python</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Java</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>C</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">🤖</div>
+                        <h3>AI/ML</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>CrewAI</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>LangGraph</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>TensorFlow</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>LangChain</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">🌐</div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>React</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>FastAPI</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Node.js</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Flask</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">🗄️</div>
+                        <h3>Database & Tools</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>MongoDB</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>PostgreSQL</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Git</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Linux</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications">
+                <h3 class="cert-title">Certifications & Courses</h3>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">📜</div>
+                        <div class="cert-info">
+                            <h4>Neural Networks & Deep Learning</h4>
+                            <p>Parul University</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🤖</div>
+                        <div class="cert-info">
+                            <h4>Robotics & Automation</h4>
+                            <p>Parul University</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">💾</div>
+                        <div class="cert-info">
+                            <h4>Databases & SQL</h4>
+                            <p>Infosys</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🧠</div>
+                        <div class="cert-info">
+                            <h4>AI & Data Science</h4>
+                            <p>Intellipaat & IIT Indore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">04. Get In Touch</span>
+                <h2 class="section-title">Let's Connect</h2>
+            </div>
+            <div class="contact-content">
+                <p class="contact-text">
+                    I'm currently looking for new opportunities as a Software Engineer or AI Backend Developer. 
+                    Whether you have a question or just want to say hi, feel free to reach out!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:maheshbabubachina55@gmail.com" class="contact-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        maheshbabubachina55@gmail.com
+                    </a>
+                    <a href="tel:+916302322053" class="contact-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        +91 6302322053
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/bachina-mahesh-babu-b9742027a/" class="social-link" target="_blank" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Bachina-mahesh" class="social-link" target="_blank" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://leetcode.com/u/Mahesh-Babu-Bachina/" class="social-link" target="_blank" title="LeetCode">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/mahesh__bachina/" class="social-link" target="_blank" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.codechef.com/users/bachina_mahesh" class="social-link" target="_blank" title="CodeChef">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.257.004c-.37.002-.735.018-1.097.048C4.57.339.339 4.57.052 10.16c-.287 5.59 3.517 10.509 9.02 11.672 5.504 1.163 10.816-2.309 12.591-8.234 1.775-5.925-1.004-12.253-6.595-14.992C13.53-.67 12.25.001 11.257.004zm.034 1.31c2.867-.001 5.68 1.274 7.556 3.48 2.988 3.49 3.537 8.677 1.317 12.77-2.22 4.094-6.916 6.114-11.31 4.99-4.394-1.124-7.363-5.305-7.136-10.048.227-4.742 3.556-8.712 8-9.543.657-.123 1.323-.18 1.99-.181zm-.032 2.067c-2.324-.001-4.6 1.004-6.115 2.732-2.408 2.741-2.779 6.82-.89 9.96 1.889 3.14 5.435 4.804 8.852 4.156 3.417-.648 6.011-3.447 6.475-6.987.464-3.54-1.39-6.986-4.625-8.596-1.203-.6-2.526-.9-3.847-.901zm.003 1.722c2.02-.002 4.004.942 5.312 2.542 2.077 2.49 2.32 6.173.581 8.953-1.74 2.78-5.139 4.127-8.256 3.273-3.118-.854-5.263-3.79-5.21-7.13.053-3.34 2.325-6.213 5.516-6.97.594-.14 1.199-.21 1.805-.211zm-.005 1.591c-1.78-.001-3.523.827-4.66 2.18-1.805 2.135-1.989 5.3-.441 7.658 1.548 2.357 4.412 3.554 7.089 2.964 2.677-.59 4.672-2.803 4.94-5.481.268-2.678-1.316-5.224-3.923-6.305-.97-.405-2.02-.61-3.073-.612zm.003 1.45c1.556-.001 3.082.71 4.07 1.89 1.573 1.852 1.728 4.603.372 6.634-1.356 2.031-3.84 3.088-6.165 2.622-2.325-.466-4.066-2.434-4.316-4.878-.25-2.444 1.09-4.738 3.322-5.687.83-.353 1.723-.532 2.62-.533zm.003 1.31c-1.334-.001-2.64.608-3.484 1.62-1.344 1.588-1.48 3.944-.328 5.692 1.152 1.748 3.295 2.648 5.302 2.235 2.007-.413 3.485-2.087 3.7-4.186.215-2.099-.932-4.062-2.851-4.877-.714-.304-1.483-.459-2.247-.46zM13 11a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1z"/>
+                        </svg>
+                    </a>
+                    
+                </div>
+                
+                    <span class="__cf_email__" data-cfemail="b3ded2d
